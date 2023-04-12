@@ -22,7 +22,6 @@ func CreateMember(c echo.Context) error {
 }
 
 func UpdateMember(c echo.Context) error {
-
 	memberId := c.Param("id")
 	var member entities.Member
 
@@ -30,7 +29,6 @@ func UpdateMember(c echo.Context) error {
 		return c.String(http.StatusBadRequest, "Member not found")
 	}
 
-	// newMember := new(entities.Member)
 	if err := c.Bind(&member); err != nil {
 		return c.String(http.StatusBadRequest, "Bad request")
 	}
@@ -42,12 +40,16 @@ func UpdateMember(c echo.Context) error {
 	return c.JSON(http.StatusOK, member)
 }
 
-func GetMemberByID(c echo.Context) error {
-	var member entities.Member
+func DeleteMember(c echo.Context) error {
 	memberId := c.Param("id")
+	var member entities.Member
 
 	if err := database.DB.First(&member, memberId).Error; err != nil {
 		return c.String(http.StatusBadRequest, "Member not found")
+	}
+
+	if err := database.DB.Delete(&member).Error; err != nil {
+		return c.String(http.StatusBadRequest, "Failed to update member")
 	}
 
 	return c.JSON(http.StatusOK, member)
