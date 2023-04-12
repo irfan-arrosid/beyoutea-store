@@ -54,3 +54,13 @@ func DeleteMember(c echo.Context) error {
 
 	return c.JSON(http.StatusOK, member)
 }
+
+func GetAllMember(c echo.Context) error {
+	var member []entities.Member
+
+	if err := database.DB.Find(&member).Error; err != nil {
+		return c.String(http.StatusBadRequest, "Member not found")
+	}
+
+	return c.JSON(http.StatusOK, member)
+}

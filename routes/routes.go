@@ -12,6 +12,7 @@ func MemberRoutes() *echo.Echo {
 	e.POST("/member", handlers.CreateMember)
 	e.PUT("/member/:id", handlers.UpdateMember)
 	e.DELETE("/member/:id", handlers.DeleteMember)
+	e.GET("/member", handlers.GetAllMember)
 
 	return e
 }
