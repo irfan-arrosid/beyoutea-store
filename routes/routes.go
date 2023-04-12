@@ -9,10 +9,13 @@ import (
 func MemberRoutes() *echo.Echo {
 	e := echo.New()
 
-	e.POST("/member", handlers.CreateMember)
-	e.PUT("/member/:id", handlers.UpdateMember)
-	e.DELETE("/member/:id", handlers.DeleteMember)
-	e.GET("/member", handlers.GetAllMember)
+	e.POST("/members", handlers.CreateMember)
+	e.PUT("/members/:id", handlers.UpdateMember)
+	e.DELETE("/members/:id", handlers.DeleteMember)
+	e.GET("/members", handlers.GetAllMember)
+
+	e.POST("/products", handlers.CreateProduct)
+	e.GET("/products", handlers.GetAllProduct)
 
 	return e
 }

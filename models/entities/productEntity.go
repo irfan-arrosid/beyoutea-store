@@ -7,9 +7,10 @@ import (
 )
 
 type Product struct {
-	Id_product   uint   `gorm:"primaryKey;autoIncrement" json:"id_product"`
-	Name_product string `json:"name_product"`
-	Price        int    `json:"price"`
+	Id_product   uint             `gorm:"primaryKey;autoIncrement" json:"id_product"`
+	Name_product string           `json:"name_product"`
+	Price        int              `json:"price"`
+	Reviews      []Review_product `json:"reviews"`
 	CreatedAt    time.Time
 	UpdatedAt    time.Time
 	DeletedAt    gorm.DeletedAt `gorm:"index"`

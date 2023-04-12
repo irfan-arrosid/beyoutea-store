@@ -11,6 +11,7 @@ func RunMigration() {
 	err := database.DB.AutoMigrate(
 		&entities.Member{},
 		&entities.Product{},
+		&entities.Review_product{},
 	)
 
 	if err != nil {
