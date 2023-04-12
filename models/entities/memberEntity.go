@@ -8,10 +8,10 @@ import (
 
 type Member struct {
 	Id_member uint   `gorm:"primaryKey; autoIncrement" json:"id_member"`
-	Username  string `gorm:"uniqueIndex" json:"username"`
-	Gender    string `json:"gender"`
-	Skintype  string `json:"skintype"`
-	Skincolor string `json:"skincolor"`
+	Username  string `gorm:"type:varchar(255); uniqueIndex; not null" json:"username"`
+	Gender    string `gorm:"type:varchar(255)" json:"gender"`
+	Skintype  string `gorm:"type:varchar(255)" json:"skintype"`
+	Skincolor string `gorm:"type:varchar(255)" json:"skincolor"`
 	CreatedAt time.Time
 	UpdatedAt time.Time
 	DeletedAt gorm.DeletedAt `gorm:"index"`

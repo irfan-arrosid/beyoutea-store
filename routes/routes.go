@@ -1,16 +1,16 @@
 package routes
 
 import (
-	"net/http"
+	"kstyle-be-techtest/handlers"
 
 	"github.com/labstack/echo/v4"
 )
 
 func MemberRoutes() *echo.Echo {
 	e := echo.New()
-	e.GET("/", func(c echo.Context) error {
-		return c.String(http.StatusOK, "Hello, World!")
-	})
+	e.POST("/member", handlers.CreateMember)
+	e.PUT("/member/:id", handlers.UpdateMember)
+	e.GET("/member/:id", handlers.GetMemberByID)
 
 	return e
 }
