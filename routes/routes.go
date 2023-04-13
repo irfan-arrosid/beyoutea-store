@@ -16,6 +16,8 @@ func MemberRoutes() *echo.Echo {
 
 	e.POST("/products", handlers.CreateProduct)
 	e.GET("/products", handlers.GetAllProduct)
+	e.GET("/products/:id", handlers.GetProductById)
+	e.POST("/products/:id", handlers.CreateProductReview)
 
 	return e
 }

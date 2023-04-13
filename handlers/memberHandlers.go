@@ -62,5 +62,7 @@ func GetAllMember(c echo.Context) error {
 		return c.String(http.StatusBadRequest, "Member not found")
 	}
 
-	return c.JSON(http.StatusOK, member)
+	return c.JSON(http.StatusOK, echo.Map{
+		"members": member,
+	})
 }
